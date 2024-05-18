@@ -1,19 +1,19 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -std=c11
 
-SRCS = detail.c
-OBJS = $(SRCS:.c=.o)
-TARGET = detail
+SRC = main.c
+OBJ = $(SRC:.c=.o)
+EXEC = student_management
 
 .PHONY: all clean
 
-all: $(TARGET)
+all: $(EXEC)
 
-$(TARGET): $(OBJS)
+$(EXEC): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(TARGET) $(OBJS)
+	rm -f $(OBJ) $(EXEC)
